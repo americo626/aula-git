@@ -1,0 +1,28 @@
+name: Deploy da Calculadora
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  pages: write
+  contents: read
+  
+concurrency:
+  group: "grupo-unico"
+  cancel-in-progress: false
+  
+jobs: 
+  deploy: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Extrair do GitHub
+        uses: actions/checkout@v4
+      - name: Configurar o GitPass
+        uses: actions/configue-pages@v5
+      - name: Fazer upload dos arquivos no pages
+        uses: actions/upload-pages-artifact@v3
+      - name: Implantar
+        uses: actions/deploy-pages@v4
+        
