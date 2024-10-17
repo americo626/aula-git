@@ -23,7 +23,7 @@ jobs:
       - name: Extrair do GitHub
         uses: actions/checkout@v4
       - name: Configurar o GitPass
-        uses: actions/configue-pages@v5
+        uses: actions/configure-pages@v5
       - name: Fazer upload dos arquivos no pages
         uses: actions/upload-pages-artifact@v3
         with: 
