@@ -15,6 +15,9 @@ concurrency:
   
 jobs: 
   deploy: 
+    environment:
+      name: github-pages
+      url: ${{steps.implantacao.outputs.page_url}}
     runs-on: ubuntu-latest
     steps: 
       - name: Extrair do GitHub
@@ -24,5 +27,6 @@ jobs:
       - name: Fazer upload dos arquivos no pages
         uses: actions/upload-pages-artifact@v3
       - name: Implantar
+        id: "implantacao"
         uses: actions/deploy-pages@v4
         
